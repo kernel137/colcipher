@@ -6,9 +6,6 @@ custom_key_flag = False
 encrypt_flag = True
 decrypt_flag = False
 #-------------------
-text_flag = True
-file_flag = False
-#----------------
 output_to_file_flag = False
 #--------------------------
 input_string = ""
@@ -114,6 +111,7 @@ With no flags, text is encrypted by default and printed to the console.
   -e, --encrypt     Encrypt input
   -d, --decrypt     Decrypt input
   -k, --key         Choose custom key for encryption or decryption
+  -s				Output to console instead of file.
   -h, --help        Print this text and exit
 
 Keys are usually integers but can also be ASCII text.
@@ -122,6 +120,8 @@ are summed up and the integer is then used as the key.
 
 Default output filename is "output.txt". If used twice or more times with 
 the same filename, output will overwrite the file.
+
+Use -s if you're reading from a file but want the output in the console.
 
 Examples:
   colcipher "Test input text"         Encodes text and prints output to console. 
@@ -138,13 +138,10 @@ if(len(sys.argv) == 2):
 	input_string = sys.argv[1]
 
 if("-t" in sys.argv or "--text" in sys.argv):
-	text_flag = True
 	input_string = sys.argv[sys.argv.index("-t")+1] if "-t" in sys.argv else sys.argv[sys.argv.index("--text")+1]
 
 elif("-f" in sys.argv or "--file" in sys.argv):
-	file_flag = True
 	output_to_file_flag = True
-	text_flag = False
 	input_filename = sys.argv[sys.argv.index("-f")+1] if "-f" in sys.argv else sys.argv[sys.argv.index("--file")+1]
 	with open(str(input_filename)) as file:
 		input_string = str(file.read())
@@ -167,7 +164,9 @@ if("-k" in sys.argv or "--key" in sys.argv):
 	key = str(sys.argv[sys.argv.index("-k")+1]) if "-k" in sys.argv else str(sys.argv[sys.argv.index("--key")+1])
 	if(key.isnumeric()): key = int(key)
 	else: key = int(sum([ord(letter) for letter in key]))
-		
+
+if("-s" in sys.argv):
+	output_to_file_flag = False
 #=============================================
 
 if(custom_key_flag):
@@ -177,12 +176,13 @@ if(custom_key_flag):
 	elif(decrypt_flag and key != 0):
 		output_string = decrypt(input_string)
 
-elif(encrypt_flag):
-	output_list = encode(input_string)
-	output_string = ' '.join([str(x) for x in output_list])\
+else:
+	if(encrypt_flag):
+		output_list = encode(input_string)
+		output_string = ' '.join([str(x) for x in output_list])\
 
-elif(decrypt_flag):
-	output_string = decode(input_string)
+	elif(decrypt_flag):
+		output_string = decode(input_string)
 
 #=============================================
 
