@@ -22,46 +22,9 @@ def collatz(it):
 	else:
 		return int(it/2)
 
-def encode(sentence):
-	csn = it = int(sum([ord(letter) for letter in sentence]))
-	out = [csn]
-	for letter in sentence:
-		numFound = False
-		count = 0
-		while not numFound:
-			if it == 1:
-				csn += 1
-				it = csn
-			while it > 1:
-				it = collatz(it)
-				count+=1
-				if it % 128 == ord(letter):
-					numFound = True
-					out.append(count)
-					break
-	return out
-
-def decode(string):
-	numbers = string.split(" ")
-	numbers = [int(i) for i in numbers] 
-	csn = it = numbers.pop(0)
-	out = ""
-	for i in range(len(numbers)):
-		count = 0
-		while True:
-			if it == 1:
-				csn+=1
-				it = csn
-			it = collatz(it)
-			count+=1
-			if count == numbers[i]:
-				out += chr(int(it%128))
-				break
-	return out
-
 def encrypt(sentence):
-	csn = it = key
-	out = []
+	csn = it = int(sum([ord(letter) for letter in sentence])) if not custom_key_flag else key
+	out = [csn] if key == 0 else []
 	for letter in sentence:
 		numFound = False
 		count = 0
@@ -81,7 +44,7 @@ def encrypt(sentence):
 def decrypt(string):
 	numbers = string.split(" ")
 	numbers = [int(i) for i in numbers] 
-	csn = it = key
+	csn = it = numbers.pop(0) if not custom_key_flag else key
 	out = ""
 	for i in range(len(numbers)):
 		count = 0
@@ -95,6 +58,43 @@ def decrypt(string):
 				out += chr(int(it%128))
 				break
 	return out
+
+# def encrypt(sentence):
+# 	csn = it = key
+# 	out = []
+# 	for letter in sentence:
+# 		numFound = False
+# 		count = 0
+# 		while not numFound:
+# 			if it == 1:
+# 				csn += 1
+# 				it = csn
+# 			while it > 1:
+# 				it = collatz(it)
+# 				count+=1
+# 				if it % 128 == ord(letter):
+# 					numFound = True
+# 					out.append(count)
+# 					break
+# 	return out
+
+# def decrypt(string):
+# 	numbers = string.split(" ")
+# 	numbers = [int(i) for i in numbers] 
+# 	csn = it = key
+# 	out = ""
+# 	for i in range(len(numbers)):
+# 		count = 0
+# 		while True:
+# 			if it == 1:
+# 				csn+=1
+# 				it = csn
+# 			it = collatz(it)
+# 			count+=1
+# 			if count == numbers[i]:
+# 				out += chr(int(it%128))
+# 				break
+# 	return out
 
 #========================================================================
 
@@ -168,22 +168,11 @@ if("-k" in sys.argv or "--key" in sys.argv):
 if("-s" in sys.argv):
 	output_to_file_flag = False
 #=============================================
-
-if(custom_key_flag):
-	if(encrypt_flag and key != 0):
-		output_list = encrypt(input_string)
-		output_string = ' '.join([str(x) for x in output_list])
-	elif(decrypt_flag and key != 0):
-		output_string = decrypt(input_string)
-
-else:
-	if(encrypt_flag):
-		output_list = encode(input_string)
-		output_string = ' '.join([str(x) for x in output_list])\
-
-	elif(decrypt_flag):
-		output_string = decode(input_string)
-
+if(encrypt_flag):
+	output_list = encrypt(input_string)
+	output_string = ' '.join([str(x) for x in output_list])
+elif(decrypt_flag):
+	output_string = decrypt(input_string)
 #=============================================
 
 if(output_to_file_flag):

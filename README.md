@@ -68,6 +68,7 @@ colcipher -t "Custom key test" -k 293569
 > **_NOTE:_**
 If a custom passkey is not provided, one is derived from the sum of the ASCII values of the plaintext itself and is inserted as the first number in the ciphertext.
 If a custom passkey is provided, it is not saved in the ciphertext.
+The custom key must be an integer larger than 0. 
 
 The `-e`, `-d`, `-s` and `-h` flags are standalone flags requiring no additional arguments. These are basically switches for customizing the behaviour and handling of input and output.
 
