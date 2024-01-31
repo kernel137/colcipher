@@ -111,7 +111,7 @@ With no flags, text is encrypted by default and printed to the console.
   -e, --encrypt     Encrypt input
   -d, --decrypt     Decrypt input
   -k, --key         Choose custom key for encryption or decryption
-  -s				Output to console instead of file.
+  -s                Output to console instead of file.
   -h, --help        Print this text and exit
 
 Keys are usually integers but can also be ASCII text.
