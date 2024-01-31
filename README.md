@@ -49,7 +49,7 @@ Available options are:
 -e, --encrypt     Encrypt input
 -d, --decrypt     Decrypt input
 -k, --key         Choose custom key for encryption or decryption
--s				  Output to console instead of file.
+-s                Output to console instead of file.
 -h, --help        Print this text and exit
 ```
 
