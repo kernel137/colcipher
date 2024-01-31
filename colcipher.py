@@ -124,7 +124,7 @@ the same filename, output will overwrite the file.
 Use -s if you're reading from a file but want the output in the console.
 
 Examples:
-  colcipher "Test input text"         Encodes text and prints output to console. 
+  colcipher "Test input text"         Encodes text and prints output to console.
   colcipher -d -t "448 26 14 613 123" Decodes text and prints output to console.
   colcipher -e -f "./plain.txt" -o "secret.txt" Takes input from file 
   "plain.txt" and outputs encoded text into secret.txt in the same directory.
