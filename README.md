@@ -1,5 +1,9 @@
 <h1 align="center">Collatz encryption tool</h1>
 
+<p align="center">
+  <img src="./collatz.gif" alt="animated" />
+</p>
+
 This script is a *proof of concept*. Utilizing _**collatz iteration**_, this CLI tool can encrypt and decrypt ASCII files with or without a custom passkey.
 
 ## Table of Contents
