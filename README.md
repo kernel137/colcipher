@@ -4,7 +4,11 @@
   <img src="./collatz.gif" alt="animated" />
 </p>
 
-This script is a *proof of concept*. Utilizing _**collatz iteration**_, this CLI tool can encrypt and decrypt ASCII files with or without a custom passkey.
+This script is a *proof of concept* and therefore has not been tested for safety. **It is not advised to use this for proper encryption purposes**. 
+
+Utilizing _**collatz iteration**_, this CLI tool can encrypt and decrypt ASCII files with or without a custom passkey.
+
+
 
 ## Table of Contents
 
@@ -90,6 +94,11 @@ colcipher --help
 # Concept
 
 The encoding/encryption algorithm works by generating numbers using the iterative function from the famous [Collatz Conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture), the **key**, whether custom or derived from the plaintext, is the starting number from which iteration starts. 
+$$
+Collatz\ iteration\\
+if\ \ 2{\mid}n\ \ then\ \ {n=3n+1}\\
+if\ \ 2{\nmid}n\ \ then\ \ {n=\frac{n}{2}}
+$$
 
 When iteration reaches the 4, 2, 1 loop, the algorithm moves to the next number and continues iterating, thus generating numbers to work with.
 
