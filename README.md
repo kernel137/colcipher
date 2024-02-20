@@ -94,9 +94,16 @@ colcipher --help
 # Concept
 
 The encoding/encryption algorithm works by generating numbers using the iterative function from the famous [Collatz Conjecture](https://en.wikipedia.org/wiki/Collatz_conjecture), the **key**, whether custom or derived from the plaintext, is the starting number from which iteration starts. 
+
 $$
-Collatz\ iteration\\
-if\ \ 2{\mid}n\ \ then\ \ {n=3n+1}\\
+Collatz\ iteration\newline
+$$
+
+$$
+if\ \ 2{\mid}n\ \ then\ \ {n=3n+1}\newline
+$$
+
+$$
 if\ \ 2{\nmid}n\ \ then\ \ {n=\frac{n}{2}}
 $$
 
