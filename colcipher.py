@@ -61,18 +61,23 @@ def decrypt(string):
 #========================================================================
 
 if(len(sys.argv) == 1 or sys.argv[1] == "-h" or sys.argv[1] == "--help"):
-	helpPage = """Usage: colcipher [OPTION]... [INPUT]
+	helpPage = """Usage: colcipher [-edsh] [-k number] [INPUT]
 Encrypt or decrypt text utilizing collatz iteration.
 Allowed input is text through command-line arguments or files.
 
-With no flags, text is encrypted by default and printed to the console.
+With no flags, first and only argument is used as text and is encrypted by
+default and printed to the console.
 
   -t, --text        Reads text from next command-line argument as input
+  [-t "text"] [--text "text"]
   -f, --file        Takes input from file and outputs to file
+  [-f "input.txt"] [--file "input.txt"]
   -o, --output      Output to file and choose file name
+  [-o "output.txt"] [--output "output.txt"]
   -e, --encrypt     Encrypt input
   -d, --decrypt     Decrypt input
   -k, --key         Choose custom key for encryption or decryption
+  [-k number] [--key number]
   -s                Output to console instead of file.
   -h, --help        Print this text and exit
 
@@ -88,9 +93,9 @@ Use -s if you're reading from a file but want the output in the console.
 Examples:
   colcipher "Test input text"         Encodes text and prints output to console.
   colcipher -d -t "448 26 14 613 123" Decodes text and prints output to console.
-  colcipher -e -f "./plain.txt" -o "secret.txt" Takes input from file 
+  colcipher -e -f "./plain.txt" -o "secret.txt"           Takes input from file 
   "plain.txt" and outputs encoded text into secret.txt in the same directory.
-  colcipher -e -k 2953 -f "plain.txt" -o "encrypted.txt" Encrypts "plain.txt"
+  colcipher -e -k 2953 -f "plain.txt" -o "encrypted.txt"  Encrypts "plain.txt"
   using custom key and outputs into "encrypted.txt".
 """
 	print(helpPage)
