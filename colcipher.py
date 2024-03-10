@@ -1,19 +1,19 @@
 import sys
 #---------
-key = 0
-custom_key_flag = False
+key: int = 0
+custom_key_flag: bool = False
 #----------------------
-encrypt_flag = True
-decrypt_flag = False
+encrypt_flag: bool = True
+decrypt_flag: bool = False
 #-------------------
-output_to_file_flag = False
+output_to_file_flag: bool = False
 #--------------------------
-input_string = ""
-input_filename = ""
+input_string: str = ""
+input_filename: str = ""
 #------------------
-output_list = []
-output_string = ""
-output_filename = "output.txt"
+output_list: list = []
+output_string: str = ""
+output_filename: str = "output.txt"
 #-----------------------------
 
 def collatz(it):
