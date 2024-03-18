@@ -17,10 +17,8 @@ output_filename: str = "output.txt"
 #-----------------------------
 
 def collatz(it):
-	if it%2 == 1:
-		return int((3*it) + 1)
-	else:
-		return int(it/2)
+	if it%2 == 1: return 3*it + 1
+	else: return it//2
 
 def encrypt(sentence):
 	csn = it = int(sum([ord(letter) for letter in sentence])) if not custom_key_flag else key
